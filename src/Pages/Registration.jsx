@@ -1,10 +1,40 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+import { updateProfile } from "firebase/auth";
+import useAuth from "../Hooks/useAuth";
 
 const Registration = () => {
     const [regError, setRegError] = useState('');
     const [showPass, setShowPass] = useState(false);
+    const {auth,userRegister}= useAuth()
+
+    const handelRegister = e => {
+        e.preventDefault()
+        const name = e.target.name.value
+        const image = e.target.image.value
+        const email = e.target.email.value
+        const password = e.target.password.value
+        const regex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+        if (!regex.test(password)) {
+            return setRegError("Password must contain at least one uppercase letter, one lowercase letter, and be at least 6 characters long"
+            )
+        }
+        else setRegError('')
+        // user registration
+        userRegister(email, password)
+            .then(result => {
+                console.log(result.user);
+                updateProfile(auth.currentUser, { displayName: name, photoURL: image });
+            })
+            .catch(error => {
+                console.log(error);
+            })
+            
+            e.target.reset();
+    };
+
+
     return (
         <div>
             <div className=" bg-hero hero min-h-screen bg-wave">
@@ -18,7 +48,7 @@ const Registration = () => {
                             <div className="mb-8 text-center">
                                 <h1 className="my-3 text-4xl font-bold">Register</h1>
                             </div>
-                            <form className="space-y-12">
+                            <form onSubmit={handelRegister} className="space-y-12">
                                 <div className="space-y-4">
                                     <div>
                                         <label htmlFor="name" className="block mb-2 text-sm">Your name</label>
