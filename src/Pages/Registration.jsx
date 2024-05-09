@@ -70,7 +70,7 @@ const Registration = () => {
                                         <input type={showPass ? "text" : "password"} name="password" id="password" placeholder="Password" required className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
                                         <span className="absolute bottom-3 right-4 text-xl" onClick={() => setShowPass(!showPass)}>{showPass ? <IoMdEyeOff /> : <IoMdEye />}</span>
                                     </div>
-                                    {regError && <small className="text-red-500">{regError}</small>}
+                                    {regError && <small className="text-red">{regError}</small>}
                                 </div>
                                 <div className="space-y-5">
                                     <div>

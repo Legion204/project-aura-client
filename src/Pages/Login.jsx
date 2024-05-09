@@ -1,10 +1,27 @@
 import { useState } from "react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { Link } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
 
 
 const Login = () => {
     const [showPass, setShowPass] = useState(false);
+    const { userLogin } = useAuth();
+
+    const handelLogin = e => {
+        e.preventDefault()
+        const email = e.target.email.value
+        const password = e.target.password.value
+        // user login with email and password
+        userLogin(email,password)
+        .then(result=>{
+            console.log(result.user);
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+    }
+
     return (
         <div>
             <div className=" bg-hero hero min-h-screen bg-wave">
@@ -18,7 +35,7 @@ const Login = () => {
                             <div className="mb-8 text-center">
                                 <h1 className="my-3 text-4xl font-bold">Login</h1>
                             </div>
-                            <form className="space-y-12">
+                            <form onSubmit={handelLogin} className="space-y-12">
                                 <div className="space-y-4">
                                     <div>
                                         <label htmlFor="email" className="block mb-2 text-sm">Email address</label>

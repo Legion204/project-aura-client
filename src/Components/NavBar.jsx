@@ -1,8 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/ProjectAuraLogo.png"
+import useAuth from "../Hooks/useAuth";
 
 const NavBar = () => {
 
+    const { userLogout, user } = useAuth();
 
     const navLinks = <div className=" flex flex-col lg:flex-row gap-5 text-xl font-Source">
         <NavLink className={({ isActive }) => isActive ? 'text-third' : ''} to={'/'}><li className="hover:text-third">Home</li></NavLink>
@@ -32,20 +34,26 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end lg:w-[30%] xl:w-[50%]">
-                <div className="flex items-center gap-3">
-                    <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
-                        <div tabIndex={0} role="button" className="w-10 rounded-full">
-                            <img className="rounded-full" alt="Tailwind CSS Navbar component" src="https://i.postimg.cc/TYTdGph6/man.png" />
+                {
+                    user ?
+                        <div className="flex items-center gap-3 mr-10">
+                            <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
+                                <div tabIndex={0} role="button" className="w-12 rounded-full">
+                                    <img className="rounded-full" alt="Tailwind CSS Navbar component" src={user ? user?.photoURL : "https://i.postimg.cc/TYTdGph6/man.png"} />
+                                </div>
+                                <ul tabIndex={0} className="dropdown-content z-[2] menu p-2 shadow bg-base-100 rounded-box w-52">
+                                    <li className="mb-3">{user?.displayName}</li>
+                                    <Link onClick={userLogout} className="btn bg-third">Logout</Link>
+                                </ul>
+                            </div>
+                        </div> :
+
+                        <div>
+                            <Link to={'/login'} className="btn bg-third">Login</Link>
+                            <Link to={'/registration'} className="btn bg-third">Sign Up</Link>
                         </div>
-                        <ul tabIndex={0} className="dropdown-content z-[2] menu p-2 shadow bg-base-100 rounded-box w-52">
-                            <li><Link>Riyad</Link></li>
-                            <li><Link to={'/update_profile'}>Update profile</Link></li>
-                        </ul>
-                    </div>
-                    <Link className="btn bg-third">Logout</Link>
-                </div>
-                <Link to={'/login'} className="btn bg-third">Login</Link>
-                <Link to={'/registration'} className="btn bg-third">Sign Up</Link>
+                }
+
             </div>
         </div>
     );

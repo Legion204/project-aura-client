@@ -15,7 +15,8 @@ export default {
       'second': '#FF80B0',
       'third': '#9399FF',
       'forth': '#A9FFFD',
-      'white':'#FFFF'
+      'white':'#FFFF',
+      'red':'#FF0000'
     },
     backgroundImage: {
       'wave': "url('/src/assets/Stacked Wave.svg')",
