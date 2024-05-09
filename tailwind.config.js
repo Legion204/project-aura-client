@@ -17,6 +17,9 @@ export default {
       'forth': '#A9FFFD',
       'white':'#FFFF'
     },
+    backgroundImage: {
+      'wave': "url('/src/assets/Stacked Wave.svg')",
+    }
   },
   plugins: [
     require('daisyui'),

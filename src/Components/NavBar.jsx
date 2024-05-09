@@ -43,8 +43,9 @@ const NavBar = () => {
                         </ul>
                     </div>
                     <Link className="btn bg-third">Logout</Link>
-                </div> :
+                </div>
                 <Link to={'/login'} className="btn bg-third">Login</Link>
+                <Link to={'/registration'} className="btn bg-third">Sign Up</Link>
             </div>
         </div>
     );
