@@ -21,7 +21,7 @@ const Slider = () => {
             <Swiper
                 centeredSlides={true}
                 autoplay={{
-                    delay: 250000,
+                    delay: 2500,
                     disableOnInteraction: false,
                 }}
                 pagination={{
@@ -34,8 +34,8 @@ const Slider = () => {
                 <SwiperSlide>
                     <div className="relative">
                         <div className="absolute flex flex-col items-center justify-center h-full w-full z-10 text-center space-y-5">
-                            <h1 className="text-8xl text-white">Join Project Aura</h1>
-                            <p className="text-4xl text-white">Transforming Surplus into Hope. Together, we are fostering food security and building vibrant communities.</p>
+                            <h1 className='font-extrabold text-5xl xl:text-8xl text-forth font-Poetsen'>Project Aura</h1>
+                            <p className="xl:text-3xl text-white">Where Every Meal Makes a Difference. Join us in reducing food waste and nourishing those in need.</p>
                         </div>
                         <img src={slider1} alt="" />
                     </div>
@@ -43,8 +43,8 @@ const Slider = () => {
                 <SwiperSlide>
                     <div className="relative">
                         <div className="absolute flex flex-col items-center justify-center h-full w-full z-10 text-center space-y-5">
-                            <h1 className="text-8xl text-white">Project Aura</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A iste voluptates eligendi, nihil fugit laborum in eos reiciendis quae</p>
+                            <h1 className='font-extrabold text-5xl xl:text-8xl text-forth font-Poetsen'>Project Aura</h1>
+                            <p className="xl:text-3xl text-white">Transforming Surplus into Hope. Together, we are fostering food security and building vibrant communities.</p>
                         </div>
                         <img src={slider2} alt="" />
                     </div>
@@ -52,8 +52,8 @@ const Slider = () => {
                 <SwiperSlide>
                     <div className="relative">
                         <div className="absolute flex flex-col items-center justify-center h-full w-full z-10 text-center space-y-5">
-                            <h1>Project Aura</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A iste voluptates eligendi, nihil fugit laborum in eos reiciendis quae</p>
+                            <h1 className='font-extrabold text-5xl xl:text-8xl text-forth font-Poetsen'>Empowerment Through Sharing</h1>
+                            <p className="xl:text-3xl text-white"> Project Aura unites individuals and businesses to create a sustainable food ecosystem. Join the movement today!</p>
                         </div>
                         <img src={slider3} alt="" />
                     </div>
@@ -61,8 +61,8 @@ const Slider = () => {
                 <SwiperSlide>
                     <div className="relative">
                         <div className="absolute flex flex-col items-center justify-center h-full w-full z-10 text-center space-y-5">
-                            <h1>Project Aura</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A iste voluptates eligendi, nihil fugit laborum in eos reiciendis quae</p>
+                            <h1 className='font-extrabold text-5xl xl:text-8xl text-forth font-Poetsen'>Project Aura</h1>
+                            <p className="xl:text-3xl text-white"> Illuminating the Path to Food Equity. Together, we are sowing seeds of change and harvesting compassion in our communities.</p>
                         </div>
                         <img src={slider4} alt="" />
                     </div>
