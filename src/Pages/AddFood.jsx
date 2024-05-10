@@ -1,7 +1,9 @@
 import useAuth from "../Hooks/useAuth";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const AddFood = () => {
-
+    const axiosSecure = useAxiosSecure()
     const { user } = useAuth();
 
     const handelAddFood = e => {
@@ -17,8 +19,22 @@ const AddFood = () => {
         const donatorName = user.displayName
         const donatorImg = user.photoURL
         const donatorEmail = user.email
-        const touristSpotData = { foodName, imageUrl, pickupLocation, quantity, exp_date, foodStatus, donatorName, donatorImg, donatorEmail, additional_notes };
-        console.log(touristSpotData);
+        const addedFood = { foodName, imageUrl, pickupLocation, quantity, exp_date, foodStatus, donatorName, donatorImg, donatorEmail, additional_notes };
+        console.log(addedFood);
+
+        axiosSecure.post('/add_food',addedFood)
+        .then(data=>{
+            if(data.data.insertedId){
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Food data successfully added to the database",
+                    showConfirmButton: false,
+                    timer: 2000
+                  });
+            }
+        })
+
     }
 
     return (
@@ -71,13 +87,13 @@ const AddFood = () => {
                         <div className="form-control">
                             <label className="label cursor-pointer gap-5">
                                 <span className="label-text text-third text-xl">Available</span>
-                                <input type="radio" name="radio" value={"Available"} className="radio checked:bg-third" checked />
+                                <input type="radio" name="radio" value={"Available"} className="radio checked:bg-third" defaultChecked />
                             </label>
                         </div>
                         <div className="form-control">
                             <label className="label cursor-pointer gap-5">
                                 <span className="label-text text-third text-xl">Not Available</span>
-                                <input type="radio" name="radio" value={" Not Available"} className="radio checked:bg-third" checked />
+                                <input type="radio" name="radio" value={" Not Available"} className="radio checked:bg-third" />
                             </label>
                         </div>
                     </div>
