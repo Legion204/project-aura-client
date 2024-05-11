@@ -39,46 +39,46 @@ const AddFood = () => {
 
     return (
         <div className="bg-wave bg-center bg-no-repeat bg-cover p-10 lg:p-32 w-full">
-            <form onSubmit={handelAddFood} className="w-full">
-                <h1 className="text-center font-semibold text-5xl text-white mb-6">Add Food</h1>
+            <form onSubmit={handelAddFood} className="w-full bg-white/50 p-4 md:p-8 xl:p-20 rounded-3xl">
+                <h1 className="text-center font-semibold text-5xl text-third mb-6 font-Poetsen">Add Food</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-5 m">
 
                     <label className="form-control w-full ">
                         <div className="label">
-                            <span className="label-text text-white">Food name</span>
+                            <span className="label-text text-third">Food name</span>
                         </div>
                         <input type="text" placeholder="Food name" name="food_name" className="input input-bordered w-full " />
                     </label>
                     <label className="form-control w-full">
                         <div className="label">
-                            <span className="label-text text-white"> Food Image URL</span>
+                            <span className="label-text text-third"> Food Image URL</span>
                         </div>
                         <input type="text" placeholder=" Food Image URL" name="image_url" className="input input-bordered w-full" />
                     </label>
 
                     <label className="form-control w-full ">
                         <div className="label">
-                            <span className="label-text text-white"> Pickup Location</span>
+                            <span className="label-text text-third"> Pickup Location</span>
                         </div>
                         <input type="text" placeholder="Pickup Location" name="location" className="input input-bordered w-full " />
                     </label>
 
                     <label className="form-control w-full ">
                         <div className="label">
-                            <span className="label-text text-white">Food quantity</span>
+                            <span className="label-text text-third">Food quantity</span>
                         </div>
                         <input type="text" placeholder="Food quantity" name="quantity" className="input input-bordered w-full " />
                     </label>
 
                     <label className="form-control w-full">
                         <div className="label">
-                            <span className="label-text text-white">Expired date</span>
+                            <span className="label-text text-third">Expired date</span>
                         </div>
                         <input type="date" placeholder="Expired date" name="exp_date" className="input input-bordered w-full " />
                     </label>
                     <label className="form-control w-full ">
                         <div className="label">
-                            <span className="label-text text-white">Additional notes</span>
+                            <span className="label-text text-third">Additional notes</span>
                         </div>
                         <input type="text" placeholder="Additional notes" name="additional_notes" className="input input-bordered w-full " />
                     </label>

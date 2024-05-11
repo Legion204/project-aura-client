@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Banner from "../Components/Banner";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import FoodCard from "../Components/FoodCard";
+import { Link } from "react-router-dom";
 
 
 
@@ -37,6 +38,7 @@ const Home = () => {
                         ></FoodCard>)
                     }
                 </div>
+                <Link className="m-5 justify-self-end" to={"/available_foods"}><button className="btn bg-third text-white">Show All</button></Link>
             </div>
         </div>
     );
