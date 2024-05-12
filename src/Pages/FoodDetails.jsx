@@ -1,14 +1,17 @@
 import { useParams } from "react-router-dom";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { useEffect, useState } from "react";
+import useAuth from "../Hooks/useAuth";
 
 
 const FoodDetails = () => {
     const axiosSecure = useAxiosSecure();
     const { id } = useParams();
+    const {user}=useAuth();
+    console.log(user);
     const [foodDetails, setFoodDetails] = useState({});
 
-    const { foodName, imageUrl, pickupLocation, quantity, exp_date, foodStatus, donatorName, donatorImg, donatorEmail, additional_notes } = foodDetails;
+    const { foodName, imageUrl, pickupLocation, quantity, exp_date, donatorName, donatorImg, donatorEmail, additional_notes,_id } = foodDetails;
 
     useEffect(() => {
         axiosSecure.get(`/food_details/${id}`)
@@ -42,15 +45,94 @@ const FoodDetails = () => {
                     </div>
                 </div>
                 <div className="flex flex-col overflow-hidden rounded-md shadow-sm w-full lg:w-3/4 justify-self-center">
-                    <img src={imageUrl} alt="" className=" dark:bg-gray-500 aspect-video" />
+                    <img src={imageUrl} alt="" className=" dark:bg-gray-500 aspect-video rounded-xl" />
                     <div className="flex flex-col justify-center gap-4">
                         <h3 className="text-3xl font-bold font-Poetsen mt-4">{foodName}</h3>
                         <p className="text-xl font-semibold">Food Quantity: <span className="font-normal">{quantity} per serving</span></p>
                         <p className="text-xl font-semibold">Expired Date: <span className="font-normal">{exp_date}</span></p>
-                        <button className="btn bg-third text-white">Request</button>
+                        <button onClick={() => document.getElementById('my_modal_3').showModal()} className="btn bg-third text-white">Request</button>
                     </div>
                 </div>
             </div>
+            {/* modal form */}
+            <dialog id="my_modal_3" className="modal">
+                <div className="modal-box w-full max-w-[80%]">
+                    <form method="dialog">
+                        {/* if there is a button in form, it will close the modal */}
+                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    </form>
+                    <form className="w-full bg-white/50 p-4 md:p-8 xl:p-20 rounded-3xl">
+                        <h1 className="text-center font-semibold text-5xl text-third mb-6 font-Poetsen">Request Food</h1>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-5 m">
+
+                            <label className="form-control w-full ">
+                                <div className="label">
+                                    <span className="label-text text-third">Food name</span>
+                                </div>
+                                <input disabled type="text" placeholder="Food name" defaultValue={foodName} name="food_name" className="input input-bordered w-full " />
+                            </label>
+                            <label className="form-control w-full">
+                                <div className="label">
+                                    <span className="label-text text-third"> Food Image URL</span>
+                                </div>
+                                <input disabled defaultValue={imageUrl} type="text" placeholder=" Food Image URL" name="image_url" className="input input-bordered w-full" />
+                            </label>
+
+                            <label className="form-control w-full ">
+                                <div className="label">
+                                    <span className="label-text text-third"> Pickup Location</span>
+                                </div>
+                                <input disabled defaultValue={pickupLocation} type="text" placeholder="Pickup Location" name="location" className="input input-bordered w-full " />
+                            </label>
+
+                            <label className="form-control w-full ">
+                                <div className="label">
+                                    <span className="label-text text-third">Food quantity</span>
+                                </div>
+                                <input disabled defaultValue={quantity} type="text" placeholder="Food quantity" name="quantity" className="input input-bordered w-full " />
+                            </label>
+
+                            <label className="form-control w-full">
+                                <div className="label">
+                                    <span className="label-text text-third">Expired date</span>
+                                </div>
+                                <input disabled defaultValue={exp_date} type="date" placeholder="Expired date" name="exp_date" className="input input-bordered w-full " />
+                            </label>
+                            <label className="form-control w-full ">
+                                <div className="label">
+                                    <span className="label-text text-third">Donator Name</span>
+                                </div>
+                                <input disabled defaultValue={donatorName} type="text" placeholder="Additional notes" name="additional_notes" className="input input-bordered w-full " />
+                            </label>
+                            <label className="form-control w-full ">
+                                <div className="label">
+                                    <span className="label-text text-third">Donator Email</span>
+                                </div>
+                                <input disabled defaultValue={donatorEmail} type="text" placeholder="Additional notes" name="additional_notes" className="input input-bordered w-full " />
+                            </label>
+                            <label className="form-control w-full ">
+                                <div className="label">
+                                    <span className="label-text text-third">User Email</span>
+                                </div>
+                                <input disabled defaultValue={user?.email} type="text" placeholder="Additional notes" name="additional_notes" className="input input-bordered w-full " />
+                            </label>
+                            <label className="form-control w-full ">
+                                <div className="label">
+                                    <span className="label-text text-third">Food ID</span>
+                                </div>
+                                <input disabled defaultValue={_id} type="text" placeholder="Additional notes" name="additional_notes" className="input input-bordered w-full " />
+                            </label>
+                            <label className="form-control w-full col-span-3 ">
+                                <div className="label">
+                                    <span className="label-text text-third">Additional notes</span>
+                                </div>
+                                <input defaultValue={additional_notes} type="text" placeholder="Additional notes" name="additional_notes" className="input input-bordered w-full " />
+                            </label>
+                        </div>
+                        <button type="submit" className="btn w-full bg-third border-none text-white mt-8">Request</button>
+                    </form>
+                </div>
+            </dialog>
         </div>
     );
 };
