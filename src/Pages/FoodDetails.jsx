@@ -2,16 +2,17 @@ import { useParams } from "react-router-dom";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { useEffect, useState } from "react";
 import useAuth from "../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 const FoodDetails = () => {
     const axiosSecure = useAxiosSecure();
     const { id } = useParams();
-    const {user}=useAuth();
+    const { user } = useAuth();
     console.log(user);
     const [foodDetails, setFoodDetails] = useState({});
 
-    const { foodName, imageUrl, pickupLocation, quantity, exp_date, donatorName, donatorImg, donatorEmail, additional_notes,_id } = foodDetails;
+    const { foodName, imageUrl, pickupLocation, quantity, exp_date, donatorName, donatorImg, donatorEmail, additional_notes, _id } = foodDetails;
 
     useEffect(() => {
         axiosSecure.get(`/food_details/${id}`)
@@ -19,6 +20,44 @@ const FoodDetails = () => {
                 setFoodDetails(data.data);
             })
     }, [id, axiosSecure]);
+
+    const handelUpdateStatus = () => {
+        const changedFoodStatus = "Requested"
+        const updatedFoodStatus = { changedFoodStatus }
+        axiosSecure.put(`/update_status/${_id}`, updatedFoodStatus)
+            .then(data => {
+                console.log(data.data);
+            })
+    };
+
+    const handelAddRequestedFood = e => {
+        e.preventDefault()
+        const form = e.target;
+        const foodName = form.food_name.value
+        const imageUrl = form.image_url.value
+        const pickupLocation = form.location.value
+        const requested_date = new Date().toDateString()
+        const exp_date = form.exp_date.value
+        const additional_notes = form.additional_notes.value
+        const donatorName = form.donator_name.value
+        const userEmail = user.email
+        const donatorEmail = form.donator_email.value
+        const food_id = form.food_id.value
+        const requestedFoodData = { foodName, imageUrl, pickupLocation, requested_date, exp_date, additional_notes, donatorName, donatorEmail, userEmail, food_id }
+
+        axiosSecure.post("/requested_foods", requestedFoodData)
+            .then(data => {
+                if(data.data.insertedId){
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Food Requested successfully",
+                        showConfirmButton: false,
+                        timer: 2000
+                      });
+                }
+            });
+    };
 
     return (
         <div className="">
@@ -61,7 +100,7 @@ const FoodDetails = () => {
                         {/* if there is a button in form, it will close the modal */}
                         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
-                    <form className="w-full bg-white/50 p-4 md:p-8 xl:p-20 rounded-3xl">
+                    <form onSubmit={handelAddRequestedFood} className="w-full bg-white/50 p-4 md:p-8 xl:p-20 rounded-3xl" method="dialog">
                         <h1 className="text-center font-semibold text-5xl text-third mb-6 font-Poetsen">Request Food</h1>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-5 m">
 
@@ -87,9 +126,9 @@ const FoodDetails = () => {
 
                             <label className="form-control w-full ">
                                 <div className="label">
-                                    <span className="label-text text-third">Food quantity</span>
+                                    <span className="label-text text-third">Requested Date</span>
                                 </div>
-                                <input disabled defaultValue={quantity} type="text" placeholder="Food quantity" name="quantity" className="input input-bordered w-full " />
+                                <input disabled defaultValue={quantity} type="text" placeholder="Food quantity" name="req_Date" className="input input-bordered w-full " />
                             </label>
 
                             <label className="form-control w-full">
@@ -102,25 +141,25 @@ const FoodDetails = () => {
                                 <div className="label">
                                     <span className="label-text text-third">Donator Name</span>
                                 </div>
-                                <input disabled defaultValue={donatorName} type="text" placeholder="Additional notes" name="additional_notes" className="input input-bordered w-full " />
+                                <input disabled defaultValue={donatorName} type="text" placeholder="Additional notes" name="donator_name" className="input input-bordered w-full " />
                             </label>
                             <label className="form-control w-full ">
                                 <div className="label">
                                     <span className="label-text text-third">Donator Email</span>
                                 </div>
-                                <input disabled defaultValue={donatorEmail} type="text" placeholder="Additional notes" name="additional_notes" className="input input-bordered w-full " />
+                                <input disabled defaultValue={donatorEmail} type="text" placeholder="Additional notes" name="donator_email" className="input input-bordered w-full " />
                             </label>
                             <label className="form-control w-full ">
                                 <div className="label">
                                     <span className="label-text text-third">User Email</span>
                                 </div>
-                                <input disabled defaultValue={user?.email} type="text" placeholder="Additional notes" name="additional_notes" className="input input-bordered w-full " />
+                                <input disabled defaultValue={user?.email} type="text" placeholder="Additional notes" name="user_email" className="input input-bordered w-full " />
                             </label>
                             <label className="form-control w-full ">
                                 <div className="label">
                                     <span className="label-text text-third">Food ID</span>
                                 </div>
-                                <input disabled defaultValue={_id} type="text" placeholder="Additional notes" name="additional_notes" className="input input-bordered w-full " />
+                                <input disabled defaultValue={_id} type="text" placeholder="Additional notes" name="food_id" className="input input-bordered w-full " />
                             </label>
                             <label className="form-control w-full col-span-3 ">
                                 <div className="label">
@@ -129,7 +168,7 @@ const FoodDetails = () => {
                                 <input defaultValue={additional_notes} type="text" placeholder="Additional notes" name="additional_notes" className="input input-bordered w-full " />
                             </label>
                         </div>
-                        <button type="submit" className="btn w-full bg-third border-none text-white mt-8">Request</button>
+                        <button onClick={handelUpdateStatus} type="submit" className="btn w-full bg-third border-none text-white mt-8">Request</button>
                     </form>
                 </div>
             </dialog>
