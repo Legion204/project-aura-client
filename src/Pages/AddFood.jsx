@@ -20,20 +20,19 @@ const AddFood = () => {
         const donatorImg = user.photoURL
         const donatorEmail = user.email
         const addedFood = { foodName, imageUrl, pickupLocation, quantity, exp_date, foodStatus, donatorName, donatorImg, donatorEmail, additional_notes };
-        console.log(addedFood);
 
-        axiosSecure.post('/add_food',addedFood)
-        .then(data=>{
-            if(data.data.insertedId){
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Food data successfully added to the database",
-                    showConfirmButton: false,
-                    timer: 2000
-                  });
-            }
-        })
+        axiosSecure.post('/add_food', addedFood)
+            .then(data => {
+                if (data.data.insertedId) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Food data successfully added to the database",
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                }
+            })
 
     }
 
