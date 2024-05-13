@@ -10,7 +10,7 @@ const NavBar = () => {
         <NavLink className={({ isActive }) => isActive ? 'text-third' : ''} to={'/'}><li className="hover:text-third">Home</li></NavLink>
         <NavLink className={({ isActive }) => isActive ? 'text-third' : ''} to={'/available_foods'}><li className="hover:text-third">Available Foods</li></NavLink>
         {user && <NavLink className={({ isActive }) => isActive ? 'text-third' : ''} to={'/add_food'}><li className="hover:text-third">Add Food</li></NavLink>}
-        {user && <NavLink className={({ isActive }) => isActive ? 'text-third' : ''} to={'/about_us'}><li className="hover:text-third">Manage My Foods</li></NavLink>}
+        {user && <NavLink className={({ isActive }) => isActive ? 'text-third' : ''} to={'/manage_my_foods'}><li className="hover:text-third">Manage My Foods</li></NavLink>}
         {user && <NavLink className={({ isActive }) => isActive ? 'text-third' : ''} to={"/my_food_requests"}><li className="hover:text-third"> My Food Request</li></NavLink>}
     </div>
 

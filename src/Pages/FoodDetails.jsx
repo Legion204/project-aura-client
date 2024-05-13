@@ -3,6 +3,8 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { useEffect, useState } from "react";
 import useAuth from "../Hooks/useAuth";
 import Swal from "sweetalert2";
+import { TbPackages } from "react-icons/tb";
+import { FcExpired } from "react-icons/fc";
 
 
 const FoodDetails = () => {
@@ -87,8 +89,8 @@ const FoodDetails = () => {
                     <img src={imageUrl} alt="" className=" dark:bg-gray-500 aspect-video rounded-xl" />
                     <div className="flex flex-col justify-center gap-4">
                         <h3 className="text-3xl font-bold font-Poetsen mt-4">{foodName}</h3>
-                        <p className="text-xl font-semibold">Food Quantity: <span className="font-normal">{quantity} per serving</span></p>
-                        <p className="text-xl font-semibold">Expired Date: <span className="font-normal">{exp_date}</span></p>
+                        <p className="text-xl font-semibold flex items-center gap-2"><TbPackages />Food Quantity: <span className="font-normal">{quantity} per serving</span></p>
+                        <p className="text-xl font-semibold flex items-center gap-2"><FcExpired />Expired Date: <span className="font-normal">{exp_date}</span></p>
                         <button onClick={() => document.getElementById('my_modal_3').showModal()} className="btn bg-third text-white">Request</button>
                     </div>
                 </div>
