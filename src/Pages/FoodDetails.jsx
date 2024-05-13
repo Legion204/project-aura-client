@@ -168,7 +168,7 @@ const FoodDetails = () => {
                                 <input defaultValue={additional_notes} type="text" placeholder="Additional notes" name="additional_notes" className="input input-bordered w-full " />
                             </label>
                         </div>
-                        <button onClick={handelUpdateStatus} type="submit" className="btn w-full bg-third border-none text-white mt-8">Request</button>
+                        <button onClick={()=>{handelUpdateStatus(),document.getElementById('my_modal_3').close()}} type="submit" className="btn w-full bg-third border-none text-white mt-8">Request</button>
                     </form>
                 </div>
             </dialog>

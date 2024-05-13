@@ -15,8 +15,7 @@ const Home = () => {
         axiosSecure.get('/featured_foods')
             .then(data => {
                 setFeaturedFoods(data.data);
-                console.log(data.data);
-            })
+            });
     }, [axiosSecure]);
 
 
