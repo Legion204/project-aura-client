@@ -8,6 +8,7 @@ import AvailableFoodsPage from "../Pages/AvailableFoodsPage";
 import FoodDetails from "../Pages/FoodDetails";
 import MyFoodRequests from "../Pages/MyFoodRequests";
 import ManageMyFoods from "../Pages/ManageMyFoods";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
             },
             {
                 path:"/add_food",
-                element:<AddFood></AddFood>
+                element:<PrivateRoute><AddFood></AddFood></PrivateRoute>
             },
             {
                 path:"/available_foods",
@@ -36,15 +37,15 @@ const router = createBrowserRouter([
             },
             {
                 path:"/food_details/:id",
-                element:<FoodDetails></FoodDetails>
+                element:<PrivateRoute><FoodDetails></FoodDetails></PrivateRoute>
             },
             {
                 path:"/my_food_requests",
-                element:<MyFoodRequests></MyFoodRequests>
+                element:<PrivateRoute><MyFoodRequests></MyFoodRequests></PrivateRoute>
             },
             {
                 path:"/manage_my_foods",
-                element:<ManageMyFoods></ManageMyFoods>
+                element:<PrivateRoute><ManageMyFoods></ManageMyFoods></PrivateRoute>
             }
         ]
     },

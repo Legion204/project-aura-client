@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 
 
 const Login = () => {
     const [showPass, setShowPass] = useState(false);
     const { userLogin, userLoginGoogle, userLoginGithub } = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
 
     // login with email pass
     const handelLogin = e => {
@@ -17,6 +19,7 @@ const Login = () => {
         userLogin(email, password)
             .then(result => {
                 console.log(result.user);
+                navigate(location?.state ? location.state : "/");
             })
             .catch(error => {
                 console.log(error);
@@ -28,6 +31,7 @@ const Login = () => {
         userLoginGoogle()
             .then(result => {
                 console.log(result.user);
+                navigate(location?.state ? location.state : "/");
             })
             .catch(error => {
                 console.log(error);
@@ -39,6 +43,7 @@ const Login = () => {
         userLoginGithub()
             .then(result => {
                 console.log(result.user);
+                navigate(location?.state ? location.state : "/");
             })
             .catch(error => {
                 console.log(error);
