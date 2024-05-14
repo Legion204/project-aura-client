@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import useAuth from "../Hooks/useAuth";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
@@ -38,6 +39,9 @@ const AddFood = () => {
 
     return (
         <div className="bg-wave bg-center bg-no-repeat bg-cover p-10 lg:p-32 w-full">
+            <Helmet>
+                <title>Project Aura | Add Food</title>
+            </Helmet>
             <form onSubmit={handelAddFood} className="w-full bg-white/50 p-4 md:p-8 xl:p-20 rounded-3xl">
                 <h1 className="text-center font-semibold text-5xl text-third mb-6 font-Poetsen">Add Food</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-5 m">

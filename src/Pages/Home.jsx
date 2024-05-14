@@ -4,6 +4,7 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 import FoodCard from "../Components/FoodCard";
 import { Link } from "react-router-dom";
 import { FaBowlFood, FaTruck } from "react-icons/fa6";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -22,6 +23,9 @@ const Home = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Project Aura | Home</title>
+            </Helmet>
             {/* Banner section */}
             <Banner></Banner>
             {/* Featured Foods section */}

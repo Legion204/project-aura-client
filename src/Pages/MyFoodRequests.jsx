@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useAuth from "../Hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 
 const MyFoodRequests = () => {
@@ -17,6 +18,9 @@ const MyFoodRequests = () => {
 
     return (
         <div className="grid">
+            <Helmet>
+                <title>Project Aura | My Food Requests</title>
+            </Helmet>
             <div className=" w-2/4 ml-6 my-6 space-y-3 font-Poetsen justify-self-center text-center" >
                 <h1 className="font-extrabold text-5xl">My Requested Foods</h1>
                 <p className="">The My Requested Foods page is your personalized dashboard, keeping you in the loop about the foods you have requested. It is a handy tool for tracking your requests, displaying key details like quantities and delivery dates, and managing everything in one place..</p>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import FoodCard from "../Components/FoodCard";
+import { Helmet } from "react-helmet-async";
 
 const AvailableFoodsPage = () => {
 
@@ -40,6 +41,9 @@ const AvailableFoodsPage = () => {
 
     return (
         <div className="grid">
+            <Helmet>
+                <title>Project Aura | Available Foods</title>
+            </Helmet>
             <div className=" w-2/4 ml-6 my-10 space-y-3 font-Poetsen justify-self-center text-center" >
                 <h1 className="font-extrabold text-5xl">Available Foods</h1>
                 <p className="">Welcome to our Available Foods page, where the essence of community shines through every meal. Here, you all discover a delightful assortment of dishes generously donated by our community members.</p>

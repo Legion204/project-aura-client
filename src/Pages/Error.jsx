@@ -1,10 +1,14 @@
 import Lottie from "lottie-react";
 import errorAnimation from "../assets/Animation404.json"
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Error = () => {
     return (
         <section className="flex items-center h-full dark:bg-gray-50 dark:text-gray-800">
+            <Helmet>
+                <title>Project Aura | Page Not Found</title>
+            </Helmet>
             <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
                 <div className="max-w-md text-center">
                     <Lottie animationData={errorAnimation} loop={true} />

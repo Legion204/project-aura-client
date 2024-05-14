@@ -3,6 +3,7 @@ import useAuth from "../Hooks/useAuth";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { MdDelete, MdEdit } from "react-icons/md";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const ManageMyFoods = () => {
@@ -83,7 +84,10 @@ const ManageMyFoods = () => {
     };
 
     return (
-        <div className="grid"> 
+        <div className="grid">
+            <Helmet>
+                <title>Project Aura | Manage My Foods</title>
+            </Helmet>
             <div className=" w-2/4 ml-6 my-6 space-y-3 font-Poetsen justify-self-center text-center" >
                 <h1 className="font-extrabold text-5xl">Manage My Foods</h1>
                 <p className="">The Manage My Food page is your personalized dashboard, keeping you in the loop about the foods you have requested. It is a handy tool for tracking your requests, displaying key details like quantities and delivery dates, and managing everything in one place..</p>

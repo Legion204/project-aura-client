@@ -5,6 +5,7 @@ import useAuth from "../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { TbPackages } from "react-icons/tb";
 import { FcExpired } from "react-icons/fc";
+import { Helmet } from "react-helmet-async";
 
 
 const FoodDetails = () => {
@@ -62,6 +63,9 @@ const FoodDetails = () => {
 
     return (
         <div className="">
+            <Helmet>
+                <title>Project Aura | Food Details</title>
+            </Helmet>
             <div className="flex flex-col lg:flex-row-reverse m-10">
                 <div className="lg:px-8 flex flex-col gap-10">
                     <h1 className="font-Poetsen text-2xl font-bold bg-third p-2 rounded-md text-white text-center">Donated By</h1>

@@ -4,6 +4,7 @@ import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { updateProfile } from "firebase/auth";
 import useAuth from "../Hooks/useAuth";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const Registration = () => {
     const [regError, setRegError] = useState('');
@@ -40,6 +41,9 @@ const Registration = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Project Aura | Registration</title>
+            </Helmet>
             <div className=" bg-hero hero min-h-screen bg-wave">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="text-center lg:text-left text-white md:mr-10">
