@@ -49,19 +49,26 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
+            const userEmail = currentUser?.email || user?.email;
+            const loggedUser = { email: userEmail }
             setUser(currentUser);
             setLoading(false);
 
             if (currentUser) {
-                const loggedUser = { email: currentUser.email }
                 axiosSecure.post("/jwt", loggedUser)
-                    .then(res => {
-                        console.log(res.data);
+                    .then(() => {
+                        // console.log(res.data);
+                    })
+            } 
+            else {
+                axiosSecure.post("/logout", loggedUser)
+                    .then(() => {
+                        // console.log(res.data);
                     })
             }
         })
         return () => unSubscribe();
-    }, [axiosSecure])
+    }, [axiosSecure,user])
 
     const data = { user, userRegister, auth, loading, userLogin, userLogout, userLoginGoogle, userLoginGithub }
     return (

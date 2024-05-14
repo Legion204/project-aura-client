@@ -38,7 +38,6 @@ const ManageMyFoods = () => {
         const additional_notes = form.additional_notes.value
         const foodStatus = form.radio.value
         const updatedFoodData = { foodName, imageUrl, pickupLocation, quantity, exp_date, foodStatus, additional_notes };
-        console.log(updatedFoodData);
 
         axiosSecure.put(`/available_foods/${foodData?._id}`, updatedFoodData)
             .then(data => {
@@ -54,7 +53,6 @@ const ManageMyFoods = () => {
 
     // delete added food data
     const handelDelete = (id) => {
-        console.log(id);
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",

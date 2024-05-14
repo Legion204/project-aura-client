@@ -11,7 +11,6 @@ const FoodDetails = () => {
     const axiosSecure = useAxiosSecure();
     const { id } = useParams();
     const { user } = useAuth();
-    console.log(user);
     const [foodDetails, setFoodDetails] = useState({});
 
     const { foodName, imageUrl, pickupLocation, quantity, exp_date, donatorName, donatorImg, donatorEmail, additional_notes, _id } = foodDetails;
@@ -27,8 +26,8 @@ const FoodDetails = () => {
         const changedFoodStatus = "Requested"
         const updatedFoodStatus = { changedFoodStatus }
         axiosSecure.put(`/update_status/${_id}`, updatedFoodStatus)
-            .then(data => {
-                console.log(data.data);
+            .then(() => {
+                
             })
     };
 
