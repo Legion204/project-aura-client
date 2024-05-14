@@ -1,13 +1,15 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { updateProfile } from "firebase/auth";
 import useAuth from "../Hooks/useAuth";
+import { toast } from "react-toastify";
 
 const Registration = () => {
     const [regError, setRegError] = useState('');
     const [showPass, setShowPass] = useState(false);
-    const {auth,userRegister}= useAuth()
+    const {auth,userRegister}= useAuth();
+    const navigate = useNavigate();
 
     const handelRegister = e => {
         e.preventDefault()
@@ -23,12 +25,13 @@ const Registration = () => {
         else setRegError('')
         // user registration
         userRegister(email, password)
-            .then(result => {
-                console.log(result.user);
+            .then(() => {
+                toast.success("Account Created Successfully")
                 updateProfile(auth.currentUser, { displayName: name, photoURL: image });
+                navigate('/')
             })
-            .catch(error => {
-                console.log(error);
+            .catch(() => {
+                toast.error("Invalid Credentials")
             })
             
             e.target.reset();

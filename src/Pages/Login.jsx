@@ -2,6 +2,7 @@ import { useState } from "react";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
+import { toast } from "react-toastify";
 
 
 const Login = () => {
@@ -17,36 +18,36 @@ const Login = () => {
         const password = e.target.password.value
         // user login with email and password
         userLogin(email, password)
-            .then(result => {
-                console.log(result.user);
+            .then(() => {
+                toast.success("login Successfully")
                 navigate(location?.state ? location.state : "/");
             })
-            .catch(error => {
-                console.log(error);
+            .catch(() => {
+                toast.error("Invalid Credentials")
             })
     };
 
     // login with google
     const handelGoogleLogin = () => {
         userLoginGoogle()
-            .then(result => {
-                console.log(result.user);
+            .then(() => {
+                toast.success("login Successfully")
                 navigate(location?.state ? location.state : "/");
             })
-            .catch(error => {
-                console.log(error);
+            .catch(() => {
+                toast.error("Invalid Credentials")
             })
     };
 
     // login with gitHub
     const handelGithubLogin = () => {
         userLoginGithub()
-            .then(result => {
-                console.log(result.user);
+            .then(() => {
+                toast.success("login Successfully")
                 navigate(location?.state ? location.state : "/");
             })
-            .catch(error => {
-                console.log(error);
+            .catch(() => {
+                toast.error("Invalid Credentials")
             })
     }
 
