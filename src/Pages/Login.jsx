@@ -67,7 +67,7 @@ const Login = () => {
                                 <div className="space-y-4">
                                     <div>
                                         <label htmlFor="email" className="block mb-2 text-sm">Email address</label>
-                                        <input type="email" name="email" id="email" placeholder="Email" required className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
+                                        <input type="email" name="email" id="email" placeholder="Email" required autoComplete="email" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
                                     </div>
                                     <div className="relative">
                                         <div className="flex justify-between mb-2">
@@ -80,7 +80,7 @@ const Login = () => {
                                 </div>
                                 <div className="space-y-5">
                                     <div>
-                                        <button type="submit" className="w-full px-8 py-3 font-semibold rounded-md bg-third text-white dark:text-black">Register</button>
+                                        <button type="submit" className="w-full px-8 py-3 font-semibold rounded-md bg-third text-white dark:text-black">Login</button>
                                     </div>
                                     <div className="flex items-center pt-4 space-x-1">
                                         <div className="flex-1 h-px sm:w-16 dark:bg-gray-300"></div>
