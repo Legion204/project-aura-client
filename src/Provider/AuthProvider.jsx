@@ -4,7 +4,7 @@ import app from "../Firebase/firebase.config";
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 
-export const AuthContext = createContext(null);
+export const AuthContext = createContext({});
 
 const auth = getAuth(app);
 

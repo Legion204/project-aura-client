@@ -114,7 +114,7 @@ const Home = () => {
                                     </div>
                                     <div className="grid content-center gap-4">
                                         <div className="p-6 rounded shadow-md dark:bg-gray-50">
-                                            <p>As a beneficiary of Total Impact's generosity, we've seen firsthand the incredible impact they have on communities. Their passion for social change is infectious, and their support has been instrumental in our success.</p>
+                                            <p>As a beneficiary of Total Impacts generosity, we have seen firsthand the incredible impact they have on communities. Their passion for social change is infectious, and their support has been instrumental in our success.</p>
                                             <div className="flex items-center mt-4 space-x-4">
                                                 <img src="https://source.unsplash.com/50x50/?portrait?3" alt="" className="w-12 h-12 bg-center bg-cover rounded-full dark:bg-gray-500" />
                                                 <div>
