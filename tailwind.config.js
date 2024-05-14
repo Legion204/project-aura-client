@@ -16,10 +16,11 @@ export default {
       'third': '#9399FF',
       'forth': '#A9FFFD',
       'white':'#FFFF',
-      'red':'#FF0000'
+      'red':'#FF0000',
     },
     backgroundImage: {
       'wave': "url('/src/assets/Stacked Wave.svg')",
+      'charity': "url('/src/assets/ctbg.jpg')",
     }
   },
   plugins: [
