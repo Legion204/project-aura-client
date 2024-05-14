@@ -34,7 +34,7 @@ const Home = () => {
                     <h1 className="font-extrabold text-5xl font-Poetsen">Featured Foods</h1>
                     <p className="">Welcome to our Featured Foods section, where the essence of community shines through every meal. Here, you all discover a delightful assortment of dishes generously donated by our community members.</p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-10 mt-12">
                     {
                         featuredFoods.slice(0, 6).map(featuredFood => <FoodCard
                             key={featuredFood._id}

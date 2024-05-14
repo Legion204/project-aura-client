@@ -8,6 +8,7 @@ const AvailableFoodsPage = () => {
     const axiosSecure = useAxiosSecure();
     const [availableFoods, setAvailableFoods] = useState([]);
     const [foodName, setFoodName] = useState('');
+    const [threeCol, setThreeCol] = useState(true);
 
     useEffect(() => {
         axiosSecure.get("/available_foods")
@@ -26,7 +27,7 @@ const AvailableFoodsPage = () => {
         });
         setAvailableFoods(sortedDateFood);
     };
-    
+
     // sort by exp date ascending order
 
     const handelSortAsc = () => {
@@ -60,8 +61,9 @@ const AvailableFoodsPage = () => {
                         <li><a onClick={handelSortDisc}> Descending order</a></li>
                     </ul>
                 </details>
+                <button onClick={() => { setThreeCol(prevState => !prevState) }} className="btn bg-third text-white hidden lg:block">Change Layout</button>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-10 mt-12">
+            <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 ${threeCol ? "xl:grid-cols-3" : "xl:grid-cols-2"} gap-10 mt-12`}>
                 {
                     availableFoods.filter((availableFood) =>
                         availableFood?.foodName.trim().toLowerCase().includes(foodName.toLowerCase())
