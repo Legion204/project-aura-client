@@ -10,6 +10,8 @@ const AvailableFoodsPage = () => {
     const [foodName, setFoodName] = useState('');
     const [threeCol, setThreeCol] = useState(true);
 
+
+
     useEffect(() => {
         axiosSecure.get("/available_foods")
             .then(data => {

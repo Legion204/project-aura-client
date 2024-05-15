@@ -4,6 +4,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";
+import Lottie from "lottie-react";
+import loginAnimation from "../assets/AnimationLogin.json"
 
 
 const Login = () => {
@@ -60,8 +62,7 @@ const Login = () => {
             <div className=" bg-hero hero min-h-screen bg-wave">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="text-center lg:text-left text-white md:mr-10">
-                        <h1 className="text-5xl font-bold font-Poetsen">Welcome to Project Aura </h1>
-                        <p className="py-6 font-Poetsen">Please Login to use your user account.</p>
+                        <Lottie animationData={loginAnimation} loop={true} />   
                     </div>
                     <div className="card flex-grow-1 w-full shadow-2xl bg-base-100">
                         <div className="flex flex-col w-full p-6 rounded-md sm:p-10 dark:bg-gray-50 dark:text-white mx-auto">

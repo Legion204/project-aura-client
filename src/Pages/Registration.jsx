@@ -5,11 +5,13 @@ import { updateProfile } from "firebase/auth";
 import useAuth from "../Hooks/useAuth";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";
+import regAnimation from "../assets/AnimationLogin.json"
+import Lottie from "lottie-react";
 
 const Registration = () => {
     const [regError, setRegError] = useState('');
     const [showPass, setShowPass] = useState(false);
-    const {auth,userRegister}= useAuth();
+    const { auth, userRegister } = useAuth();
     const navigate = useNavigate();
 
     const handelRegister = e => {
@@ -34,8 +36,8 @@ const Registration = () => {
             .catch(() => {
                 toast.error("Invalid Credentials")
             })
-            
-            e.target.reset();
+
+        e.target.reset();
     };
 
 
@@ -47,8 +49,7 @@ const Registration = () => {
             <div className=" bg-hero hero min-h-screen bg-wave">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="text-center lg:text-left text-white md:mr-10">
-                        <h1 className="text-5xl font-bold">Welcome to Project Aura </h1>
-                        <p className="py-6">Please Register to create a user account.</p>
+                        <Lottie animationData={regAnimation} loop={true} />
                     </div>
                     <div className="card flex-grow-1 w-full shadow-2xl bg-base-100">
                         <div className="flex flex-col w-full p-6 rounded-md sm:p-10 dark:bg-gray-50 dark:text-white mx-auto">

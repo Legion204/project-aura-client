@@ -1,20 +1,28 @@
-import { useEffect, useState } from "react";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useAuth from "../Hooks/useAuth";
 import { Helmet } from "react-helmet-async";
+import { useQuery } from "@tanstack/react-query";
+import LoadingSpinner from "../Components/LoadingSpinner";
 
 
 const MyFoodRequests = () => {
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
-    const [reqFoods, setReqFood] = useState([]);
 
-    useEffect(() => {
-        axiosSecure.get(`/requested_foods?email=${user?.email}`)
-            .then(data => {
-                setReqFood(data.data);
-            })
-    }, [axiosSecure, user]);
+    const { data: reqFoods=[], isLoading } = useQuery({
+        queryFn: () =>getData(),
+        queryKey: 'availableFoods'
+    })
+
+    const getData = async () => {
+        const { data } = await axiosSecure(`/requested_foods?email=${user?.email}`)
+        return data
+    }
+
+
+    if(isLoading){
+        return <LoadingSpinner></LoadingSpinner>
+    }
 
     return (
         <div className="grid">

@@ -46,3 +46,6 @@ Features and characteristics of this website:
   - react tostify
   - lottie react
   - sweetalert2
+  - tanStack
+  - react-countup
+  - Framer-motion
