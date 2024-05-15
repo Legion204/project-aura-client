@@ -5,6 +5,7 @@ import FoodCard from "../Components/FoodCard";
 import { Link } from "react-router-dom";
 import { FaBowlFood, FaTruck } from "react-icons/fa6";
 import { Helmet } from "react-helmet-async";
+import CountUp from 'react-countup';
 
 
 
@@ -53,19 +54,19 @@ const Home = () => {
                 <div className="bg-charity bg-base-300 bg-no-repeat bg-cover bg-center grid bg-blend-darken">
                     <div className="flex flex-col lg:flex-row justify-around text-center text-white gap-5 mt-5">
                         <div>
-                            <p className="font-bold text-5xl mb-2">13386801</p>
+                            <p className="font-bold text-5xl mb-2"><CountUp enableScrollSpy={true} duration={2.5} start={10000000} end={13386801} /></p>
                             <p>MILLION POUNDS RESCUED</p>
                         </div>
                         <div>
-                            <p className="font-bold text-5xl mb-2">7269033</p>
+                            <p className="font-bold text-5xl mb-2"><CountUp enableScrollSpy={true} duration={2.5} start={7000000} end={7269033} /></p>
                             <p>MILLION LBS. CO2e DIVERTED</p>
                         </div>
                         <div>
-                            <p className="font-bold text-5xl mb-2">11155668</p>
+                            <p className="font-bold text-5xl mb-2"><CountUp enableScrollSpy={true} duration={2.5} start={10000000} end={11155668} /></p>
                             <p>MILLION MEALS DONATED</p>
                         </div>
                         <div>
-                            <p className="font-bold text-5xl mb-2">6104381256</p>
+                            <p className="font-bold text-5xl mb-2"><CountUp enableScrollSpy={true} duration={2.5} start={6000000000} end={6104381256} /></p>
                             <p>WATER GALLONS SAVED</p>
                         </div>
                     </div>
