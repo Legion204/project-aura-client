@@ -51,7 +51,7 @@ const Home = () => {
                     <h1 className="font-extrabold text-5xl font-Poetsen">2023 Total Impact</h1>
                     <p className="">showcases the cumulative effect of our initiatives, partnerships, and community contributions throughout the year. Dive into the numbers, stories, and milestones that reflect our commitment to making a positive difference. Explore how each action, no matter how small, contributes to our collective impact and drives meaningful change in our world</p>
                 </div>
-                <div className="bg-charity bg-base-300 bg-no-repeat bg-cover bg-center grid bg-blend-darken">
+                <div className="bg-charity bg-no-repeat bg-cover bg-center grid bg-blend-darken">
                     <div className="flex flex-col lg:flex-row justify-around text-center text-white gap-5 mt-5">
                         <div>
                             <p className="font-bold text-5xl mb-2"><CountUp enableScrollSpy={true} duration={2.5} start={10000000} end={13386801} /></p>

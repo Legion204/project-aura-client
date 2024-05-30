@@ -2,9 +2,9 @@ import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import app from "../Firebase/firebase.config";
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
-import useAxiosSecure from "../Hooks/useAxiosSecure";
+import axios from "axios";
 
-export const AuthContext = createContext({});
+export const AuthContext = createContext(null);
 
 const auth = getAuth(app);
 
@@ -13,7 +13,6 @@ const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true);
-    const axiosSecure = useAxiosSecure();
 
     // user registration with email and pass
     const userRegister = (email, password) => {
@@ -55,20 +54,20 @@ const AuthProvider = ({ children }) => {
             setLoading(false);
 
             if (currentUser) {
-                axiosSecure.post("/jwt", loggedUser)
+                axios.post(`${import.meta.env.VITE_API_URL}/jwt`, loggedUser,{withCredentials: true})
                     .then(() => {
                         // console.log(res.data);
                     })
             } 
             else {
-                axiosSecure.post("/logout", loggedUser)
+                axios.post(`${import.meta.env.VITE_API_URL}/logout`, loggedUser,{withCredentials: true})
                     .then(() => {
                         // console.log(res.data);
                     })
             }
         })
         return () => unSubscribe();
-    }, [axiosSecure,user])
+    }, [user])
 
     const data = { user, userRegister, auth, loading, userLogin, userLogout, userLoginGoogle, userLoginGithub }
     return (
