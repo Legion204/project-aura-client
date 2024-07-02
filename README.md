@@ -2,6 +2,8 @@
 
 Live Link: https://project-aura-7b690.web.app/
 
+Server side github repo Link: https://github.com/Legion204/aura-news-server
+
 Features and characteristics of this website:
 
 - ### User-Friendly Interface:
