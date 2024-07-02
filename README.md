@@ -1,5 +1,7 @@
 # Project Aura
 
+Aura is a community-driven food sharing platform designed to reduce food waste and foster a sense of community. The website connects individuals and organizations, enabling them to share surplus food with those in need. Built with a user-friendly interface using React, Aura ensures a seamless and engaging experience for all users.
+
 Live Link: https://project-aura-7b690.web.app/
 
 Server side github repo Link: https://github.com/Legion204/aura-news-server
@@ -51,3 +53,10 @@ Features and characteristics of this website:
   - tanStack
   - react-countup
   - Framer-motion
+  - 
+- # To run the project locally
+    - copy this git repo and server side repo  
+    - open terminal in vs-code  
+    - type npm run dev to run client side website  
+    - open server side file in vs-code  
+    - open terminal and type nodemon index.js to run the server. (Note: "If nodemon is not istall in your device install it")  
